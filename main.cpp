@@ -24,7 +24,7 @@ void suffle_goat_list(const list<goat>& trip);
 
 int main() {
     srand(time(0));
-    bool again;
+    
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -92,6 +92,23 @@ int main_menu() {
         cin >> choice;
     }
     return choice;
+}
+
+void count_goats_by_age(list<Goat> &trip, int age) {
+    int count = count_if(trip.begin(), trip.end(), [age](const Goat& g) { return g.get_age() > age; });
+    cout << "Goats older than " << age << ": " << count << endl;
+}
+
+void find_oldest_goat(list<Goat> &trip) {
+    auto oldest = max_element(trip.begin(), trip.end(), [](const Goat& a, const Goat& b) { return a.get_age() < b.get_age(); });
+    if (oldest != trip.end())
+        cout << "Oldest goat: " << oldest->get_name() << " (" << oldest->get_age() << " years)" << endl;
+}
+
+void find_youngest_goat(list<Goat> &trip) {
+    auto youngest = min_element(trip.begin(), trip.end(), [](const Goat& a, const Goat& b) { return a.get_age() < b.get_age(); });
+    if (youngest != trip.end())
+        cout << "Youngest goat: " << youngest->get_name() << " (" << youngest->get_age() << " years)" << endl;
 }
 
 void delete_goat(list<Goat> &trip) {
