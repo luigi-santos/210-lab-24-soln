@@ -112,14 +112,32 @@ void find_youngest_goat(list<Goat> &trip) {
 }
 
 void sort_goats_by_age(list<Goat> &trip) {
-    trip.sort( [](const Goat& a, const Goat& b) { return a.get_age() < b.get_age(); });
+    trip.sort([](const Goat& a, const Goat& b) { return a.get_age() < b.get_age(); });
     cout << "Goats sorted by age." << endl;
 }
 
 void sort_goats_by_name(list<Goat> &trip) {
-    trip.sort( [](const Goat& a, const Goat& b) { return a.get_name() < b.get_name(); });
+    trip.sort([](const Goat& a, const Goat& b) { return a.get_name() < b.get_name(); });
     cout << "Goats sorted by name." << endl;
 }
+
+void remove_goats_by_color(list<Goat> &trip, const string& color) {
+    trip.remove_if([&color](const Goat& g { return g.get_color() == color; });
+    cout << "Removed goats with color" << color << "." << endl;
+}
+
+void display_unique_color(list<Goat> &trip) {
+    set<string> colors;
+    transform(trip.begin(), trip.end(), inserter(colors, colors.end()), [](const Goat& g) { return g.get_color(); });
+    cout << "Unique colors: ";
+    for (const auto& color : colors) {
+        cout << color << " ";
+    }
+    cout << endl;
+}
+
+void shuffle_goat_list(list<Goat>& trip) {
+    
 
 void delete_goat(list<Goat> &trip) {
     cout << "DELETE A GOAT\n";
