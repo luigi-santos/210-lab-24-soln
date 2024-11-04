@@ -111,6 +111,16 @@ void find_youngest_goat(list<Goat> &trip) {
         cout << "Youngest goat: " << youngest->get_name() << " (" << youngest->get_age() << " years)" << endl;
 }
 
+void sort_goats_by_age(list<Goat> &trip) {
+    trip.sort( [](const Goat& a, const Goat& b) { return a.get_age() < b.get_age(); });
+    cout << "Goats sorted by age." << endl;
+}
+
+void sort_goats_by_name(list<Goat> &trip) {
+    trip.sort( [](const Goat& a, const Goat& b) { return a.get_name() < b.get_name(); });
+    cout << "Goats sorted by name." << endl;
+}
+
 void delete_goat(list<Goat> &trip) {
     cout << "DELETE A GOAT\n";
     int index = select_goat(trip);
