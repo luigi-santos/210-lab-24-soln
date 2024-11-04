@@ -80,10 +80,10 @@ int main() {
 
 int main_menu() {
     cout << "*** GOAT MANAGER 3001 ***\n";
-    cout << "[1] Add a goat\n";
-    cout << "[2] Delete a goat\n";
-    cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[1]Add a goat [2]Delete a goat [3]List goats" << endl;
+    cout << "[4]Count goats by age [5]Find oldest goat [6]Find youngest goat" << endl;
+    cout << "[7]Sort goats by age [8]Sort goats by name [9]Remove goats by color" << endl;
+    cout << "[10]Display unique colors [11]Shuffle goats [12}Quit" << endl;
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -137,7 +137,13 @@ void display_unique_color(list<Goat> &trip) {
 }
 
 void shuffle_goat_list(list<Goat>& trip) {
-    
+    vector<Goat> goatVector(trip.begin(), trip.end());
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(goatVector.begin(), goatVector.end(), g);
+    trip.assign(goatVector.begin(), goatVector.end());
+    cout << "Shuffled goat list" << endl;
+}
 
 void delete_goat(list<Goat> &trip) {
     cout << "DELETE A GOAT\n";
