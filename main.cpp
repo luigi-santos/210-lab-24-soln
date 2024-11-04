@@ -53,7 +53,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 4) {
+    while (sel != 12) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -66,6 +66,38 @@ int main() {
             case 3:    
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
+                break;
+            case 4: {
+                int age;
+                cout << "Enter age: ";
+                cin >> age;
+                count_goats_by_age(trip, age);
+                break;
+            }
+            case 5:
+                find_oldest_goat(trip);
+                break;
+            case 6:
+                find_younget_goat(trip);
+                break;
+            case 7:
+                sort_goats_by_age(trip);
+                break;
+            case 8:
+                sort_goats_by_name(trip);
+                break;
+            case 9:{
+                string color;
+                cout << "Enter color to remove: ";
+                cin >> color;
+                remove_goats_by_color(trip, color);
+                break;
+            }
+            case 10:
+                sdisplay_unique_colors(trip);
+                break;
+            case 11:
+                shuffle_goat_list(trip);
                 break;
             default:
                 cout << "Invalid selection.\n";
