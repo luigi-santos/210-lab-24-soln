@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <random>
+#include <algorithm>
 #include "Goat.h"
 using namespace std;
 
@@ -14,13 +16,13 @@ void display_trip(const list<Goat> trip);
 int main_menu();
 
 void count_goats_by_age(const list<Goat>& trip, int age);
-void find_oldest_goat(const list<goat>& trip);
-void find_youngest_goat(const list<goat>& trip);
-void sort_goats_by_age(const list<goat>& trip);
-void sort_goats_by_name(const list<goat>& trip);
-void remove_goats_by_color(const list<goat>& trip, const string& color);
-void display_unique_colors(const list<goat>& trip);
-void suffle_goat_list(const list<goat>& trip);
+void find_oldest_goat(const list<Goat>& trip);
+void find_youngest_goat(const list<Goat>& trip);
+void sort_goats_by_age(const list<Goat>& trip);
+void sort_goats_by_name(const list<Goat>& trip);
+void remove_goats_by_color(const list<Goat>& trip, const string& color);
+void display_unique_colors(const list<Goat>& trip);
+void suffle_goat_list(const list<Goat>& trip);
 
 int main() {
     srand(time(0));
@@ -78,7 +80,7 @@ int main() {
                 find_oldest_goat(trip);
                 break;
             case 6:
-                find_younget_goat(trip);
+                find_youngest_goat(trip);
                 break;
             case 7:
                 sort_goats_by_age(trip);
@@ -94,7 +96,7 @@ int main() {
                 break;
             }
             case 10:
-                sdisplay_unique_colors(trip);
+                display_unique_colors(trip);
                 break;
             case 11:
                 shuffle_goat_list(trip);
@@ -119,7 +121,7 @@ int main_menu() {
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 12) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -154,11 +156,11 @@ void sort_goats_by_name(list<Goat> &trip) {
 }
 
 void remove_goats_by_color(list<Goat> &trip, const string& color) {
-    trip.remove_if([&color](const Goat& g { return g.get_color() == color; });
+    trip.remove_if([&color](const Goat& g) { return g.get_color() == color; });
     cout << "Removed goats with color" << color << "." << endl;
 }
 
-void display_unique_color(list<Goat> &trip) {
+void display_unique_colors(list<Goat> &trip) {
     set<string> colors;
     transform(trip.begin(), trip.end(), inserter(colors, colors.end()), [](const Goat& g) { return g.get_color(); });
     cout << "Unique colors: ";
