@@ -10,8 +10,17 @@ const int SZ_NAMES = 200, SZ_COLORS = 25;
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
-void display_trip(list<Goat> trip);
+void display_trip(const list<Goat> trip);
 int main_menu();
+
+void count_goats_by_age(const list<Goat>& trip, int age);
+void find_oldest_goat(const list<goat>& trip);
+void find_youngest_goat(const list<goat>& trip);
+void sort_goats_by_age(const list<goat>& trip);
+void sort_goats_by_name(const list<goat>& trip);
+void remove_goats_by_color(const list<goat>& trip, const string& color);
+void display_unique_colors(const list<goat>& trip);
+void suffle_goat_list(const list<goat>& trip);
 
 int main() {
     srand(time(0));
